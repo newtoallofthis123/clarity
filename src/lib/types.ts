@@ -18,6 +18,11 @@ export type FullUser = {
       commentTo?: string;
       commentLength: number;
     }[];
+  section: {
+    code: string;
+    user_id: string;
+    mentor_id: string;
+  };
 } & User;
   
 export type FullPost = {
@@ -36,5 +41,6 @@ export type FullPost = {
     updatedAt: Date;
     karma: number;
     sectionId: string;
+    user_type: string;
   };
 } & Post;

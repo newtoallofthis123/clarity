@@ -85,6 +85,12 @@ model User {
 
   section   Section? @relation(fields: [sectionId], references: [code])
   sectionId String?
+
+  rsvp Event? @relation(fields: [rsvpId], references: [id])
+  rsvpId String?
+
+  user_type String @default("student")
+  social Social?
 }
 
 model Section {
@@ -100,6 +106,8 @@ model Mentor {
   name      String
   section   Section @relation(fields: [sectionId], references: [code])
   sectionId String
+
+  events    Event[]
 }
 
 model VerificationToken {
@@ -108,4 +116,36 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Event {
+  id       String  @id @default(cuid())
+  title    String
+  
+  organizer Mentor @relation(fields: [organizerId], references: [id])
+  organizerId String
+
+  content  String
+  poster  String?
+  date     DateTime @default(now())
+  location String
+  link     String
+  rsvp User[]
+}
+
+model Social {
+    id String @id @default(cuid())
+    user_id String @unique
+    user User @relation(fields: [user_id], references: [id])
+    github String?
+    bio String?
+    linkedin String?
+    twitter String?
+    website String?
+    instagram String?
+    facebook String?
+    youtube String?
+    medium String?
+    dev String?
+    twitch String?
 }

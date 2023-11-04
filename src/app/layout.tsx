@@ -37,11 +37,17 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></link>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        ></link>
       </head>
       <body className={`font-sans ${inter.variable}`}>
         <Nav session={session ?? undefined} user={user} />
         <TRPCReactProvider headers={headers()}>{children}</TRPCReactProvider>
+        <footer className="mt-4 p-3 py-6 text-center text-2xl">
+          <div></div>
+        </footer>
       </body>
     </html>
   );

@@ -8,6 +8,7 @@ import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import DropDown from "./dropdown";
 
 type Props = {
   params: {
@@ -24,16 +25,21 @@ export default async function PostPage({ params: { id } }: Props) {
 
   const user =
     (await api.user.get.query({ id: session?.user.id ?? "" })) ?? undefined;
+  
+  const admin = post?.user_id == user?.id;
+  
   return (
     <main className="flex flex-row justify-between gap-x-5">
       <div className="ml-4 w-[20%]">
         <About user={user} />
       </div>
-      <div className="w-[60%] py-0">
+      <div className="w-[60%] py-0 pl-10">
         {post?.post_type == "comment" && (
           <Button className="my-4">
             <a href={"/post/" + post?.commentTo}>
-              <p className="text-lg"><i className="bi bi-arrow-left"></i> Go Back</p>
+              <p className="text-lg">
+                <i className="bi bi-arrow-left"></i> Go Back
+              </p>
             </a>
           </Button>
         )}
@@ -61,7 +67,7 @@ export default async function PostPage({ params: { id } }: Props) {
               {post?.post_type == "comment" && (
                 <Badge className="bg-blue-600">Discuss</Badge>
               )}
-              {post?.post_type == "question" && (
+              {post?.post_type == "question" && post.solved && (
                 <Badge className="bg-green-600">Answer</Badge>
               )}
               {post?.solved && <Badge className="bg-green-600">Solved</Badge>}
@@ -90,19 +96,22 @@ export default async function PostPage({ params: { id } }: Props) {
             </div>
             <div className="flex flex-row items-center justify-center gap-x-2">
               {(post?.likes.length ?? 0) > 0 ? (
-                <>🔥+{(post?.likes.length ?? 0) * 10} Karma</>
+                <>✨{(post?.likes.length ?? 0) * 10} Stars</>
               ) : (
                 <></>
               )}
+              <DropDown post={post} user={user} admin={admin} />
             </div>
           </div>
         </div>
         <div>
+        <div className="pb-8">
           <Comment
             user_id={user?.id ?? ""}
             name={user?.name ?? "Anonymus"}
             post_id={id}
           />
+        </div>
           <Posts allowComments={true} posts={comments} user={user} />
         </div>
       </div>

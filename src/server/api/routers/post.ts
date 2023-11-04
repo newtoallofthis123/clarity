@@ -32,6 +32,20 @@ export const postRouter = createTRPCRouter({
     }
   ),
 
+getPostByUser: protectedProcedure
+.input(z.object({ id: z.string() }))
+.query(({ ctx, input }) => {
+    return ctx.db.post.findMany({
+        where: {
+            user_id: input.id,
+        },
+        include: {
+            likes: true,
+            user: true,
+        }
+    });
+}),
+
   getComments: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
@@ -45,6 +59,31 @@ export const postRouter = createTRPCRouter({
         }
       });
     }),
+  
+  delete: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(({ ctx, input }) => {
+      return ctx.db.post.delete({
+        where: {
+          id: input.id,
+        }
+      })
+    }
+  ),
+
+  markSolved: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(({ ctx, input }) => {
+      return ctx.db.post.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          solved: true,
+        }
+      })
+    }
+  ),
   
   createComment: protectedProcedure
     .input(z.object({ 

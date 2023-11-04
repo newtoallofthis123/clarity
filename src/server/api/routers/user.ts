@@ -20,6 +20,7 @@ export const userRouter = createTRPCRouter({
             include: {
                 likes: true,
                 posts: true,
+                section: true,
             },
         });
     }),

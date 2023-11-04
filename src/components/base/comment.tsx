@@ -23,6 +23,8 @@ export default function Comment({ post_id, name, user_id }: Props) {
 
   const comment_api = api.post.createComment.useMutation()
 
+  const increase_comment_count = api.post.increaseCommentLength.useMutation()
+
   function handleSubmit() {
     comment_api.mutate({
       commentTo: post_id,
@@ -33,6 +35,10 @@ export default function Comment({ post_id, name, user_id }: Props) {
 
     setComment("")
     setTitle("")
+
+    increase_comment_count.mutate({
+      id: post_id
+    })    
 
     router.refresh()
   }

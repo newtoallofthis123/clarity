@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react'
 import { type FullUser } from '~/lib/types';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
@@ -10,15 +9,13 @@ type Props = {
 
 export default function About({user}: Props) {
   return (
-    <div className="bg-neutral-50 rounded-lg border-2 border-neutral-800 border-b-4 border-r-4 px-1 py-3">
+    <div className="rounded-lg border-2 border-b-4 border-r-4 border-neutral-800 bg-neutral-50 px-1 py-3 mt-3">
       <div className="flex flex-col items-center justify-center gap-y-4">
-        <Avatar className='w-24 h-24 my-0.5'>
-          <AvatarImage
-            src={"https://i.pravatar.cc/300?u=" + user?.name} 
-          />
+        <Avatar className="my-0.5 h-24 w-24">
+          <AvatarImage src={"https://i.pravatar.cc/300?u=" + user?.name} />
           <AvatarFallback>{user?.name}</AvatarFallback>
         </Avatar>
-        <span className="text-3xl font-bold text-neutral-800 mb-2">
+        <span className="mb-2 text-3xl font-bold text-neutral-800">
           {user?.name}
         </span>
       </div>
@@ -26,11 +23,14 @@ export default function About({user}: Props) {
         <span>
           {user?.posts.length} {user?.posts.length === 1 ? "post" : "posts"}
         </span>{" "}
-        | <span>🌸 {user?.karma} Karma</span>
+        | <span>✨ {user?.karma} Stars</span> |{" "}
+        <span>👨‍🎓 {user?.section.code}</span>
       </div>
-      <div className='mt-4 mx-1'>
-        <p className='text-lg my-2 ml-3 text-neutral-800'>
-        </p>
+      <div className="mx-1 mt-4">
+        <p className="my-2 ml-3 text-lg text-neutral-800"></p>
+      </div>
+      <div>
+        <CreatePost user={user} />
       </div>
     </div>
   );

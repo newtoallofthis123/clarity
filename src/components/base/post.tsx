@@ -11,6 +11,7 @@ import { Button } from "../ui/button";
 import { type User } from "@prisma/client";
 import { Input } from "../ui/input";
 import { api } from "~/trpc/react";
+import { useRouter } from "next/navigation";
 
 type Props = {
     initial?: string;
@@ -26,26 +27,32 @@ export default function CreatePost({user}: Props) {
           Text,
             Strike
       ],
-    content: "<p>Today was awesome bro!</p>",
+    content: "<h1>Hi!</h1><p>Today was an awesome day</p>",
   });
+
+  const router = useRouter();
     
     const post = api.post.create.useMutation();
 
-    const [title, setTitle] = React.useState("");
+  const [title, setTitle] = React.useState("How Cool is this");
     
     function onSubmit() {
-        const content = editor?.getHTML() ?? "";
+        const content = editor?.getText() ?? "";
 
         const res = post.mutate({
             title,
             content,
             user_id: user?.id ?? "",
         });
+      
+      console.log(res);
+
+      router.refresh()
     }
 
     return (
       <div className="p-2">
-        <div className="editor rounded-xl border-2 border-b-4 border-neutral-600 bg-white p-3">
+        <div className="editor rounded-xl bg-white p-3">
           <Input
             onChange={(e) => {
               setTitle(e.target.value);
