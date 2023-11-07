@@ -43,8 +43,8 @@ export default async function PostPage({ params: { id } }: Props) {
             </a>
           </Button>
         )}
-        <div className="rounded-lg  border-2 border-b-4 border-neutral-800 py-0 leading-relaxed">
-          <div className="flex flex-row items-center justify-between gap-x-4 border-b-2 border-black px-4 py-2">
+        <div className="rounded-lg  border-2 border-neutral-200 py-0 leading-relaxed">
+          <div className="flex flex-row items-center justify-between gap-x-4 border-b-2 border-neutral-200 px-4 py-2">
             <div className="flex flex-row items-center justify-center gap-x-2">
               <Avatar className="my-0.5 h-14 w-14">
                 <AvatarImage
@@ -77,7 +77,7 @@ export default async function PostPage({ params: { id } }: Props) {
             <h1 className="pb-2 text-3xl font-bold">{post?.title}</h1>
             <p className="text-lg">{post?.content}</p>
           </div>
-          <div className="flex flex-row justify-between border-t-2 border-black p-2 text-lg">
+          <div className="flex flex-row justify-between border-t-2 border-neutral-200 p-2 text-lg">
             <div className="flex flex-row items-center justify-center pb-0.5">
               <div className="px-3 text-lg text-neutral-800">
                 <LikeComponent user={user} post={post} />

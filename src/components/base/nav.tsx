@@ -25,7 +25,7 @@ export default function Nav({ session, user, title = "Clarity" }: Props) {
 
   return (
     <div className="px-3 py-2">
-      <nav className="flex w-full flex-row items-center justify-between rounded-xl border-2 border-b-4 border-r-4 border-neutral-800 p-3">
+      <nav className="flex w-full flex-row items-center justify-between rounded-xl border-2 border-neutral-200 p-3 shadow-sm hover:shadow-md transition duration-300 ease-in-out">
         <div className="flex w-2/5 flex-row items-end">
           <Image
             alt="Logo"

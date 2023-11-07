@@ -9,7 +9,7 @@ export default async function Events() {
 
     return (
       <div>
-        <div className="flex flex-col rounded-md border-2 border-b-4 border-black">
+        <div className="flex flex-col rounded-md border-2 px-3 border-neutral-200 shadow-sm hover:shadow-md transition duration-300 ease-in-out">
           <div className="px-2 py-4 text-xl">
             <h2 className="pb-2 text-3xl font-bold">🔥 Trending Events</h2>
             {events.map((event) => {

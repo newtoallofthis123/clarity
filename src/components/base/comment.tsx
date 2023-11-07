@@ -46,9 +46,9 @@ export default function Comment({ post_id, name, user_id }: Props) {
   return (
     <div className="mt-4">
       <div className="flex flex-col justify-center">
-        <div className="border-2 border-b-4 rounded-md border-neutral-800">
+        <div className="border-2 rounded-md border-neutral-200">
           <Input 
-            className="w-full border-0 text-xl border-b-2 border-black rounded-none px-2 py-3"
+            className="w-full border-0 text-xl border-b-2 border-neutral-200 rounded-none px-2 py-3"
             placeholder="Title"
             value={title}
             onChange={(e) => {

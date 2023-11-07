@@ -9,7 +9,7 @@ type Props = {
 
 export default function About({user}: Props) {
   return (
-    <div className="rounded-lg border-2 border-b-4 border-r-4 border-neutral-800 bg-neutral-50 px-1 py-3 mt-3">
+    <div className="rounded-lg border-2 border-neutral-200 bg-neutral-50 px-1 py-3 mt-3 shadow-sm hover:shadow-md transition duration-300 ease-in-out">
       <div className="flex flex-col items-center justify-center gap-y-4">
         <Avatar className="my-0.5 h-24 w-24">
           <AvatarImage src={"https://i.pravatar.cc/300?u=" + user?.name} />
