@@ -15,8 +15,8 @@ import { Button } from '~/components/ui/button';
 import { api } from '~/trpc/react';
 
 type Props = {
-    post: FullPost;
-    user: FullUser;
+    post: FullPost | undefined;
+    user: FullUser | undefined;
 }
 
 export default function DropDown({post, user}: Props) {
@@ -33,13 +33,13 @@ export default function DropDown({post, user}: Props) {
           <DropdownMenuSeparator />
           <DropdownMenuItem>
                         <Button onClick={() => {
-                            delete_post.mutate({ id: post.id });
+                            delete_post.mutate({ id: post?.id ?? "" });
             }}>Delete Post</Button>
           </DropdownMenuItem>
           <DropdownMenuItem>
                         <Button
                             onClick={() => {
-                                mark_solved.mutate({ id: post.id });
+                                mark_solved.mutate({ id: post?.id ?? "" });
                             }
                         }
                         >Mark as Solved</Button>

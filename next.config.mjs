@@ -18,7 +18,6 @@ const config = {
   experimental: {
     serverActions: true,
   },
-  output: "standalone"
 };
 
 export default config;

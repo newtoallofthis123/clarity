@@ -8,8 +8,8 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  posts: FullPost[];
-  user: FullUser;
+  posts: FullPost[] | null;
+  user: FullUser | null;
   allowComments?: boolean;
 };
 
@@ -17,7 +17,7 @@ export default function Posts({ posts, user, allowComments=false }: Props) {
   const router = useRouter();
   return (
     <div className="mt-1">
-      {posts.map((post) => {
+      {posts?.map((post) => {
         if (post.post_type == "comment" && !allowComments) {
           return ""
         }

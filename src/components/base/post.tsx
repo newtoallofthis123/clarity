@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 
 type Props = {
     initial?: string;
-    user?: User;
+    user: User | null;
 };
 
 export default function CreatePost({user}: Props) {

@@ -31,7 +31,7 @@ export default async function PostPage({ params: { id } }: Props) {
   return (
     <main className="flex flex-row justify-between gap-x-5">
       <div className="ml-4 w-[20%]">
-        <About user={user} />
+        <About user={user ?? null} />
       </div>
       <div className="w-[60%] py-0 pl-10">
         {post?.post_type == "comment" && (
@@ -73,6 +73,7 @@ export default async function PostPage({ params: { id } }: Props) {
               {post?.solved && <Badge className="bg-green-600">Solved</Badge>}
             </div>
           </div>
+
           <div className="px-5 py-3">
             <h1 className="pb-2 text-3xl font-bold">{post?.title}</h1>
             <p className="text-lg">{post?.content}</p>
@@ -80,7 +81,7 @@ export default async function PostPage({ params: { id } }: Props) {
           <div className="flex flex-row justify-between border-t-2 border-neutral-200 p-2 text-lg">
             <div className="flex flex-row items-center justify-center pb-0.5">
               <div className="px-3 text-lg text-neutral-800">
-                <LikeComponent user={user} post={post} />
+                <LikeComponent user={user ?? null} post={post ?? null} />
               </div>
               <p className="px-3 text-lg text-neutral-800">
                 <button>
@@ -100,7 +101,7 @@ export default async function PostPage({ params: { id } }: Props) {
               ) : (
                 <></>
               )}
-              <DropDown post={post} user={user} admin={admin} />
+              <DropDown post={post} user={user} />
             </div>
           </div>
         </div>
@@ -112,7 +113,7 @@ export default async function PostPage({ params: { id } }: Props) {
             post_id={id}
           />
         </div>
-          <Posts allowComments={true} posts={comments} user={user} />
+          <Posts allowComments={true} posts={comments} user={user ?? null} />
         </div>
       </div>
       <div className="w-[20%]"></div>

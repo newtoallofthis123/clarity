@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import CreatePost from './post';
 
 type Props = {
-  user?: FullUser;
+  user: FullUser | null;
 };
 
 export default function About({user}: Props) {
@@ -24,7 +24,7 @@ export default function About({user}: Props) {
           {user?.posts.length} {user?.posts.length === 1 ? "post" : "posts"}
         </span>{" "}
         | <span>✨ {user?.karma} Stars</span> |{" "}
-        <span>👨‍🎓 {user?.section.code}</span>
+        <span>👨‍🎓 {user?.section?.code}</span>
       </div>
       <div className="mx-1 mt-4">
         <p className="my-2 ml-3 text-lg text-neutral-800"></p>

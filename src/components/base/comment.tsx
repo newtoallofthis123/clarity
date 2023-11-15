@@ -1,7 +1,6 @@
 "use client"
 
 import React from 'react'
-import { type FullPost } from '~/lib/types'
 import { Textarea } from '../ui/textarea';
 import { Button } from '../ui/button';
 import { api } from '~/trpc/react';
