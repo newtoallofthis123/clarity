@@ -12,9 +12,10 @@ type Props = {
 };
 
 export default async function EventPage({ params: { id } }: Props) {
-  const event = await api.event.getEvent.query({
-    id,
-  }) ?? undefined;
+  const event =
+    (await api.event.getEvent.query({
+      id,
+    })) ?? undefined;
 
   const session = await getServerAuthSession();
 
@@ -32,14 +33,14 @@ export default async function EventPage({ params: { id } }: Props) {
   }
 
   async function addRsVP(formdata: FormData) {
-    "use server"
+    "use server";
 
     console.log(formdata);
-      const add_rsvp = await api.event.addRSVP.mutate({
-        eventId: id,
-        user_id: user?.id ?? "",
-      });
-      console.log(add_rsvp);
+    const add_rsvp = await api.event.addRSVP.mutate({
+      eventId: id,
+      user_id: user?.id ?? "",
+    });
+    console.log(add_rsvp);
   }
 
   return (
@@ -63,18 +64,21 @@ export default async function EventPage({ params: { id } }: Props) {
               </p>
               <p className="pt-4 text-lg">{event?.content}</p>
             </div>
-            <form action={addRsVP} className="flex flex-row items-center justify-between">
-              {
-                !isDone ? (<>
-                <Button type="submit" className="mt-4 text-lg">
-                Click to RSVP to this event
-                  </Button></>) : (<>
-                    <p
-                      className="mt-4 text-lg"> 
-                      You have a RSVP to this event
-                    </p>
-                  </>)
-              }
+            <form
+              action={addRsVP}
+              className="flex flex-row items-center justify-between"
+            >
+              {!isDone ? (
+                <>
+                  <Button type="submit" className="mt-4 text-lg">
+                    Click to RSVP to this event
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <p className="mt-4 text-lg">You have a RSVP to this event</p>
+                </>
+              )}
               <p>
                 <a
                   className="flex flex-row items-center justify-center"
@@ -92,41 +96,35 @@ export default async function EventPage({ params: { id } }: Props) {
           <div>
             <p className="text-xl">
               Attended by{" "}
-              <span className="font-bold">
-                {rsvps?.rsvp.length}
-              </span>{" "}
-              {
-                rsvps?.rsvp.length === 1
-                  ? "person"
-                  : "people"
-              } in your class
-                {
-                rsvps?.rsvp.length === 0 && (
-                    ". Be the first to 🎈RSVP!"
-                )
-                }
+              <span className="font-bold">{rsvps?.rsvp.length}</span>{" "}
+              {rsvps?.rsvp.length === 1 ? "person" : "people"} in your class
+              {rsvps?.rsvp.length === 0 && ". Be the first to 🎈RSVP!"}
             </p>
             <div>
-            {
-                rsvps?.rsvp.length !== 0 && (
+              {rsvps?.rsvp.length !== 0 && (
                 <div>
-                    <h2 className="text-2xl font-bold py-3">Your friends who are attending:</h2>
-                    <div className="flex flex-row items-center gap-x-2">
+                  <h2 className="py-3 text-2xl font-bold">
+                    Your friends who are attending:
+                  </h2>
+                  <div className="flex flex-row items-center gap-x-2">
                     {rsvps?.rsvp.map((rsvp) => (
-                        <div key={rsvp.id} className="flex flex-row items-center justify-center gap-x-2">
+                      <div
+                        key={rsvp.id}
+                        className="flex flex-row items-center justify-center gap-x-2"
+                      >
                         <Image
-                            className="w-8 h-8 rounded-full"
-                            width={40}
-                            height={40}
-                            src={"https://i.pravatar.cc/300?u=" + rsvp.name}
-                            alt="avatar"
+                          className="h-8 w-8 rounded-full"
+                          width={40}
+                          height={40}
+                          src={"https://i.pravatar.cc/300?u=" + rsvp.name}
+                          alt="avatar"
                         />
                         <p className="text-lg">{rsvp.name}</p>
-                        </div>
+                      </div>
                     ))}
-                    </div>
-                </div>)
-            }
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

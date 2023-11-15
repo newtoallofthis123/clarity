@@ -13,17 +13,17 @@ type Props = {
   allowComments?: boolean;
 };
 
-export default function Posts({ posts, user, allowComments=false }: Props) {
+export default function Posts({ posts, user, allowComments = false }: Props) {
   const router = useRouter();
   return (
     <div className="mt-1">
       {posts?.map((post) => {
         if (post.post_type == "comment" && !allowComments) {
-          return ""
+          return "";
         }
         return (
           <div
-            className="mt-0 translate-y-4 cursor-pointer border-2 border-neutral-200 text-lg shadow-sm border-t-0"
+            className="mt-0 translate-y-4 cursor-pointer border-2 border-t-0 border-neutral-200 text-lg shadow-sm"
             key={post.id}
           >
             <div

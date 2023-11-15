@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { type Session } from "next-auth";
 import Link from "next/link";
@@ -22,10 +22,9 @@ type Props = {
 };
 
 export default function Nav({ session, user, title = "Clarity" }: Props) {
-
   return (
     <div className="px-3 py-2">
-      <nav className="flex w-full flex-row items-center justify-between rounded-xl border-2 border-neutral-200 p-3 shadow-sm hover:shadow-md transition duration-300 ease-in-out">
+      <nav className="flex w-full flex-row items-center justify-between rounded-xl border-2 border-neutral-200 p-3 shadow-sm transition duration-300 ease-in-out hover:shadow-md">
         <div className="flex w-2/5 flex-row items-end">
           <Image
             alt="Logo"
@@ -38,16 +37,16 @@ export default function Nav({ session, user, title = "Clarity" }: Props) {
             <span className="pr-2 text-4xl font-black">
               {user?.sectionId ?? title}
             </span>{" "}
-            <span className="text-neutral-600">
-              Clarity
-            </span>
+            <span className="text-neutral-600">Clarity</span>
           </a>
         </div>
         <div className="flex flex-row items-center gap-x-6 text-lg text-neutral-600">
           <Link href="/events">👀 Events</Link>
           <Link href="/">🎤 Forums</Link>
           <Link href="/notice">📍 Notice Board</Link>
-          <Link href="https://github.com/newtoallofthis123/clarity">❓ About</Link>
+          <Link href="https://github.com/newtoallofthis123/clarity">
+            ❓ About
+          </Link>
           <div className="flex flex-row items-center justify-center gap-x-4 pl-8">
             <DropdownMenu>
               <DropdownMenuTrigger>
@@ -67,9 +66,7 @@ export default function Nav({ session, user, title = "Clarity" }: Props) {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link href="/">
-                    Home
-                  </Link>  
+                  <Link href="/">Home</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Link href="/comments/[id]" as={"/comments/" + user?.id}>

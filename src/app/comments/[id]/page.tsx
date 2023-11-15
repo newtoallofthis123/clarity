@@ -106,14 +106,14 @@ export default async function CommentPage({ params: { id } }: Props) {
               <p className="pt-6 text-xl">Keep up the good work!</p>
               <div className="pt-4">
                 <h2 className="text-2xl font-bold">Stats:</h2>
-                <div className="text-lg leading-relazed">
+                <div className="leading-relazed text-lg">
                   <p>
                     <span className="underline">Posts:</span>
-                    <span>{" "}{posts?.length}</span>
+                    <span> {posts?.length}</span>
                   </p>
                   <p>
                     <span className="underline">Comments:</span>
-                    <span>{" "}{posts?.length}</span>
+                    <span> {posts?.length}</span>
                   </p>
                 </div>
               </div>

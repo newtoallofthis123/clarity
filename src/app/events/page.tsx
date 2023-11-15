@@ -10,7 +10,7 @@ export default async function EventPage() {
   const session = await getServerAuthSession();
 
   const user = await api.user.get.query({ id: session?.user.id ?? "" });
-            
+
   return (
     <main className="flex flex-row justify-between gap-x-5">
       <div className="ml-4 w-[20%]">
@@ -39,7 +39,7 @@ export default async function EventPage() {
                 </div>
                 <div className="flex flex-row items-center justify-between">
                   <Button className="mt-4 text-lg">
-                            <a href={"/events/" + event.id}>RSVP to this event</a>
+                    <a href={"/events/" + event.id}>RSVP to this event</a>
                   </Button>
                   <p>
                     <a

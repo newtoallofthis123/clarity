@@ -25,9 +25,9 @@ export default async function PostPage({ params: { id } }: Props) {
 
   const user =
     (await api.user.get.query({ id: session?.user.id ?? "" })) ?? undefined;
-  
+
   const admin = post?.user_id == user?.id;
-  
+
   return (
     <main className="flex flex-row justify-between gap-x-5">
       <div className="ml-4 w-[20%]">
@@ -106,13 +106,13 @@ export default async function PostPage({ params: { id } }: Props) {
           </div>
         </div>
         <div>
-        <div className="pb-8">
-          <Comment
-            user_id={user?.id ?? ""}
-            name={user?.name ?? "Anonymus"}
-            post_id={id}
-          />
-        </div>
+          <div className="pb-8">
+            <Comment
+              user_id={user?.id ?? ""}
+              name={user?.name ?? "Anonymus"}
+              post_id={id}
+            />
+          </div>
           <Posts allowComments={true} posts={comments} user={user ?? null} />
         </div>
       </div>

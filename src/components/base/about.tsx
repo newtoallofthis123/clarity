@@ -1,15 +1,15 @@
-import React from 'react'
-import { type FullUser } from '~/lib/types';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import CreatePost from './post';
+import React from "react";
+import { type FullUser } from "~/lib/types";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import CreatePost from "./post";
 
 type Props = {
   user: FullUser | null;
 };
 
-export default function About({user}: Props) {
+export default function About({ user }: Props) {
   return (
-    <div className="rounded-lg border-2 border-neutral-200 bg-neutral-50 px-1 py-3 mt-3 shadow-sm hover:shadow-md transition duration-300 ease-in-out">
+    <div className="mt-3 rounded-lg border-2 border-neutral-200 bg-neutral-50 px-1 py-3 shadow-sm transition duration-300 ease-in-out hover:shadow-md">
       <div className="flex flex-col items-center justify-center gap-y-4">
         <Avatar className="my-0.5 h-24 w-24">
           <AvatarImage src={"https://i.pravatar.cc/300?u=" + user?.name} />

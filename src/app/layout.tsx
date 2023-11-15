@@ -24,15 +24,15 @@ export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-  }) {
-  
+}) {
   const session = await getServerAuthSession();
 
   if (!session) {
     redirect("/api/auth/signin");
   }
-  
-  const user = await api.user.get.query({ id: session?.user.id }) ?? undefined;
+
+  const user =
+    (await api.user.get.query({ id: session?.user.id })) ?? undefined;
 
   return (
     <html lang="en">
