@@ -28,7 +28,7 @@ export default async function Events() {
                 className="flex flex-row items-center justify-between py-1"
                 key={event.id}
               >
-                <a href={"/events/" + event.id}>{event.title}</a>
+                <a href={"/post/" + event.id}>{event.title}</a>
                 <p className="text-sm text-neutral-600">
                   {event.likes.length > 0 ? event.likes.length + " hits" : ""}{" "}
                   by {Math.floor(Math.random() * 10) + 1} people

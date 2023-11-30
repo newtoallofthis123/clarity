@@ -42,9 +42,8 @@ export default function Nav({ session, user, title = "Clarity" }: Props) {
         </div>
         <div className="flex flex-row items-center gap-x-6 text-lg text-neutral-600">
           <Link href="/events">👀 Events</Link>
-          <Link href="/">🎤 Forums</Link>
-          <Link href="/notice">📍 Notice Board</Link>
-          <Link href="https://github.com/newtoallofthis123/clarity">
+          
+          <Link href="/about">
             ❓ About
           </Link>
           <div className="flex flex-row items-center justify-center gap-x-4 pl-8">
@@ -68,11 +67,7 @@ export default function Nav({ session, user, title = "Clarity" }: Props) {
                 <DropdownMenuItem>
                   <Link href="/">Home</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/comments/[id]" as={"/comments/" + user?.id}>
-                    Questions
-                  </Link>
-                </DropdownMenuItem>
+               
                 <DropdownMenuItem>
                   <Link href="/users/[id]" as={"/users/" + user?.id}>
                     My Profile
