@@ -67,11 +67,7 @@ export default function Nav({ session, user, title = "Clarity" }: Props) {
                 <DropdownMenuItem>
                   <Link href="/">Home</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/comments/[id]" as={"/comments/" + user?.id}>
-                    Questions
-                  </Link>
-                </DropdownMenuItem>
+               
                 <DropdownMenuItem>
                   <Link href="/users/[id]" as={"/users/" + user?.id}>
                     My Profile
