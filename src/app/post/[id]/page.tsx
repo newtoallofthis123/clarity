@@ -9,6 +9,8 @@ import { Button } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 import DropDown from "./dropdown";
+import Link from "next/link";
+import Events from "~/components/base/events";
 
 type Props = {
   params: {
@@ -46,11 +48,13 @@ export default async function PostPage({ params: { id } }: Props) {
         <div className="rounded-lg  border-2 border-neutral-200 py-0 leading-relaxed">
           <div className="flex flex-row items-center justify-between gap-x-4 border-b-2 border-neutral-200 px-4 py-2">
             <div className="flex flex-row items-center justify-center gap-x-2">
-              <Avatar className="my-0.5 h-14 w-14">
+             <Avatar className="my-0.5 h-14 w-14">
+             <Link href={"/users/"+post?.user.id}>
                 <AvatarImage
                   src={"https://i.pravatar.cc/300?u=" + post?.user.name}
                 />
                 <AvatarFallback>{post?.user.name}</AvatarFallback>
+             </Link>
               </Avatar>
               <div>
                 <p className="p-0 text-xl font-bold">{post?.user.name}</p>
@@ -116,7 +120,9 @@ export default async function PostPage({ params: { id } }: Props) {
           <Posts allowComments={true} posts={comments} user={user ?? null} />
         </div>
       </div>
-      <div className="w-[20%]"></div>
+      <div className="w-[20%]">
+        <Events />
+      </div>
     </main>
   );
 }
