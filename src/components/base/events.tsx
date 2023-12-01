@@ -8,7 +8,7 @@ export default async function Events() {
   posts = posts?.filter((post) => post.post_type == "comment");
 
   return (
-    <div>
+    <div className="sticky top-24">
       <div className="flex flex-col rounded-md border-2 border-neutral-200 px-3 shadow-sm transition duration-300 ease-in-out hover:shadow-md">
         <div className="px-2 py-4 text-xl">
           <h2 className="pb-2 text-3xl font-bold">🔥 Trending Events</h2>

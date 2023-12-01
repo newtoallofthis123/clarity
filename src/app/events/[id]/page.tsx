@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import About from "~/components/base/about";
 import { Button } from "~/components/ui/button";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import SubmitButton from "./button";
 
 type Props = {
   params: {
@@ -32,23 +32,12 @@ export default async function EventPage({ params: { id } }: Props) {
     });
   }
 
-  async function addRsVP(formdata: FormData) {
-    "use server";
-
-    console.log(formdata);
-    const add_rsvp = await api.event.addRSVP.mutate({
-      eventId: id,
-      user_id: user?.id ?? "",
-    });
-    console.log(add_rsvp);
-  }
-
   return (
     <main className="flex flex-row items-center justify-center gap-x-5">
       <div className="w-[60%] py-0">
         <div className="flex flex-col justify-center">
           <div
-            className=" my-3 rounded-md border-2 border-b-4 border-black p-3"
+            className="my-3 rounded-md border-2 border-b-4 border-black p-3"
             key={event?.id}
           >
             <div>
@@ -64,34 +53,29 @@ export default async function EventPage({ params: { id } }: Props) {
               </p>
               <p className="pt-4 text-lg">{event?.content}</p>
             </div>
-            <form
-              action={addRsVP}
+            <div
               className="flex flex-row items-center justify-between"
             >
               {!isDone ? (
-                <>
-                  <Button type="submit" className="mt-4 text-lg">
-                    Click to RSVP to this event
-                  </Button>
-                </>
+               <SubmitButton eventId={event?.id ?? ""} user_id={user?.id ?? ""} /> 
               ) : (
-                <>
-                  <p className="mt-4 text-lg">You have a RSVP to this event</p>
-                </>
+                <p className="mt-4 text-lg">You have a RSVP to this event</p>
               )}
               <p>
-                <a
-                  className="flex flex-row items-center justify-center"
-                  href={event?.link}
-                >
-                  <i
-                    className="bi bi-link-45deg text-3xl
+                {event?.link != "" && (
+                  <a
+                    className="flex flex-row items-center justify-center"
+                    href={event?.link}
+                  >
+                    <i
+                      className="bi bi-link-45deg text-3xl
                             "
-                  ></i>
-                  {event?.link.split("/")[2]}
-                </a>
+                    ></i>
+                    {event?.link.split("/")[2]}
+                  </a>
+                )}
               </p>
-            </form>
+            </div>
           </div>
           <div>
             <p className="text-xl">

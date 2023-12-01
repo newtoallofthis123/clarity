@@ -17,7 +17,7 @@ export default async function Home() {
   let posts = (await api.post.getAll.query({})).reverse() ?? null;
 
   posts = posts?.filter((post) => !post.solved);
-  posts = posts?.filter((post) => post.user_id != user?.id);
+  posts = posts?.filter((post) => post.user_id);
 
   return (
     <main className="px-4 py-2 text-neutral-800">

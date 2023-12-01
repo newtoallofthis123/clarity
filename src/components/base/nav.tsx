@@ -23,7 +23,7 @@ type Props = {
 
 export default function Nav({ session, user, title = "Clarity" }: Props) {
   return (
-    <div className="px-3 py-2">
+    <div className="top-0 z-10 sticky bg-white px-3 py-2">
       <nav className="flex w-full flex-row items-center justify-between rounded-xl border-2 border-neutral-200 p-3 shadow-sm transition duration-300 ease-in-out hover:shadow-md">
         <div className="flex w-2/5 flex-row items-end">
           <Image
@@ -40,7 +40,7 @@ export default function Nav({ session, user, title = "Clarity" }: Props) {
             <span className="text-neutral-600">Clarity</span>
           </a>
         </div>
-        <div className="flex flex-row items-center gap-x-6 text-lg text-neutral-600">
+        <div className="flex flex-row bg-white items-center gap-x-6 text-lg text-neutral-600">
           <Link href="/events">👀 Events</Link>
           
           <Link href="/about">

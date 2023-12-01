@@ -53,8 +53,10 @@ export default function LikeComponent({ user, post }: Props) {
         post_id: post_id ?? "",
       });
 
+      console.log(post?.user.id);
+
       upvote.mutate({
-        user_id: user.id,
+        user_id: post?.user_id ?? "",
         to_add: 10,
       });
     }
