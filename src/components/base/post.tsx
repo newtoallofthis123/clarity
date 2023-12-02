@@ -21,7 +21,7 @@ type Props = {
 export default function CreatePost({ user }: Props) {
   const editor = useEditor({
     extensions: [StarterKit, Document, Paragraph, Text, Strike],
-    content: "<h1>Hi!</h1><p>Today was an awesome day</p>",
+    content: "<p>Hi!</p><p>Today was an awesome day</p>",
   });
 
   const router = useRouter();
@@ -46,16 +46,18 @@ export default function CreatePost({ user }: Props) {
 
   return (
     <div className="p-2">
-      <div className="editor rounded-xl bg-white p-3">
+      <div className="editor rounded-xl border-2 border-b-4 border-neutral-600 bg-white p-3">
         <Input
           onChange={(e) => {
             setTitle(e.target.value);
           }}
-          className="mb-4 border-2 border-b-4 border-neutral-600 text-base"
+          className="mb-4 text-xl font-bold"
           value={title}
           placeholder="Enter The Post Title"
         />
         <EditorContent editor={editor} />
+      </div>
+      <div>
         <Button
           onClick={onSubmit}
           className="mt-2 w-full px-3 py-2 pl-2 text-lg"
