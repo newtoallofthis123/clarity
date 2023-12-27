@@ -66,4 +66,11 @@ If you would like to contribute to Clarity, please feel free to open a pull requ
 
 Clarity is licensed under the MIT License. More under [LICENSE](LICENSE).
 
+## Contributors
+
+- Ishan Joshi
+- Mamillapalli Prudhvi
+- Chinmay Venu Kishore
+- G Nikash
+
 ## Made for Mark XXIV
